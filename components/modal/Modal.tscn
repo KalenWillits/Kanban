@@ -1,0 +1,28 @@
+[gd_scene load_steps=2 format=3 uid="uid://cseorwdv1vd3"]
+
+[ext_resource type="Script" path="res://components/modal/Modal.gd" id="1_ap8bx"]
+
+[node name="Modal" type="PopupPanel"]
+visible = true
+content_scale_size = Vector2i(256, 512)
+script = ExtResource("1_ap8bx")
+
+[node name="VBox" type="VBoxContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 96.0
+offset_bottom = 96.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBox" type="HBoxContainer" parent="VBox"]
+offset_right = 92.0
+offset_bottom = 8.0
+
+[node name="TextEdit" type="TextEdit" parent="VBox/HBox"]
+offset_right = 8.0
+offset_bottom = 8.0
+text = "awdawdawdaw"

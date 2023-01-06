@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://dy66xuy4kaub4"]
+
+[ext_resource type="FontFile" uid="uid://7ww1d3ya1rvs" path="res://static/UbuntuMono-R.ttf" id="1_7oj5b"]
+[ext_resource type="Script" path="res://components/note/Note.gd" id="1_w4wvf"]
+
+[node name="Note" type="VBoxContainer"]
+size_flags_horizontal = 3
+script = ExtResource("1_w4wvf")
+TextBoxNodePath = NodePath("VBox/HBox/TextBox")
+
+[node name="VBox" type="VBoxContainer" parent="."]
+offset_right = 8.0
+offset_bottom = 12.0
+
+[node name="HBox" type="HBoxContainer" parent="VBox"]
+offset_right = 8.0
+offset_bottom = 12.0
+size_flags_vertical = 0
+
+[node name="TextBox" type="TextEdit" parent="VBox/HBox"]
+offset_right = 8.0
+offset_bottom = 12.0
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("1_7oj5b")
+theme_override_font_sizes/font_size = 14
+scroll_fit_content_height = true
+
+[connection signal="focus_entered" from="VBox/HBox/TextBox" to="." method="_on_text_focus_entered"]
+[connection signal="text_changed" from="VBox/HBox/TextBox" to="." method="_on_text_box_text_changed"]
