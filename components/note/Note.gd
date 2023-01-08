@@ -7,9 +7,6 @@ var dindex
 
 signal on_select(note)
 
-func _ready():
-	pass # Replace with function body
-
 func _on_text_focus_entered():
 	Cache.selected = self
 	
@@ -27,7 +24,7 @@ func decrement_position():
 		text_box.grab_focus()
 		
 func move_right():
-	if get_parent().dindex < (get_parent().get_parent().get_child_count() - 1):
+	if get_parent().dindex < (get_parent().get_parent().get_child_count() - 2):
 		dindex = get_parent().get_parent().get_child(get_parent().dindex + 2).get_child_count() - 2
 		var copy = duplicate()
 		copy.dindex = dindex

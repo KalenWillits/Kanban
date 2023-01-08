@@ -1,6 +1,6 @@
 res://Main.tscn
 res://components/note/Note.tscn
 res://components/stack/Stack.tscn
-res://components/stack/Stack.gd
-res://Main.gd
 res://components/note/Note.gd
+res://Main.gd
+res://components/stack/Stack.gd

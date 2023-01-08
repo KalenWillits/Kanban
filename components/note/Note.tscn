@@ -9,18 +9,16 @@ script = ExtResource("1_w4wvf")
 TextBoxNodePath = NodePath("VBox/HBox/TextBox")
 
 [node name="VBox" type="VBoxContainer" parent="."]
-offset_right = 8.0
-offset_bottom = 25.0
+layout_mode = 2
 
 [node name="HBox" type="HBoxContainer" parent="VBox"]
-offset_right = 8.0
-offset_bottom = 25.0
+layout_mode = 2
 size_flags_vertical = 0
 
 [node name="TextBox" type="TextEdit" parent="VBox/HBox"]
-offset_right = 8.0
-offset_bottom = 25.0
+layout_mode = 2
 size_flags_horizontal = 3
+focus_mode = 1
 theme_override_fonts/font = ExtResource("1_7oj5b")
 theme_override_font_sizes/font_size = 12
 scroll_fit_content_height = true

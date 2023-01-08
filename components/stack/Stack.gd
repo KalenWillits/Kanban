@@ -44,3 +44,9 @@ func set_title(new_title):
 
 func _on_title_input_focus_entered():
 	Cache.selected = self
+	
+func get_next():
+	if self.get_child_count() > 1:
+		return self.get_child(1)
+	else:
+		return null

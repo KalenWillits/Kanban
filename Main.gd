@@ -28,35 +28,41 @@ func _ready():
 
 
 func get_data():
-	var data: Dictionary = {}
+	var data: Array
 	for i in range(1, $VBox/HBox/Div/VBox/HBox.get_child_count()):
-		var stack_title = $VBox/HBox/Div/VBox/HBox.get_child(i).get_title()
-		var stack_data = $VBox/HBox/Div/VBox/HBox.get_child(i).get_data()
-		data[stack_title] = stack_data
+		match i:
+			1:
+				data.append($VBox/HBox/Div/VBox/HBox.get_child(i).get_title())
+			_:
+				data.append($VBox/HBox/Div/VBox/HBox.get_child(i).get_data())
 	return data
 	
 func set_data(data):
-	for stack_title in data.keys():
-		var stack = make_new_stack()
-		stack.set_title(stack_title)
-		for note_data in data[stack_title]:
-			stack.make_new_note(note_data)
+	if data != null:
+		for stack_array in data:
+			if stack_array.size() > 0:
+				var stack = make_new_stack(stack_array[0])
+				for i in range(1, stack_array.size()):
+					stack.make_new_note(stack_array[i])
+			else:
+				var _stack = make_new_stack("")
 
 func _input(_event):
 	if Input.is_action_just_pressed("ui_cancel"):
 		$VBox/HBox/Div/VBox/HBox/Menu/NewButton.grab_focus()
 		
 		
-func make_new_stack():
+func make_new_stack(title: String):
 	if ($VBox/HBox/Div/VBox/HBox.get_child_count() - 1) < MAX_STACKS:
 		var stack = StackPackedScene.instantiate()
+		stack.set_title(title)
 		stack.dindex = $VBox/HBox/Div/VBox/HBox.get_child_count() - 1
 		$VBox/HBox/Div/VBox/HBox.add_child(stack)
 		return stack
 	
 
 func _on_new_button_button_down():
-	make_new_stack()
+	make_new_stack("")
 
 
 func _on_delete_button_button_down():
@@ -119,7 +125,7 @@ func load_data():
 	if file:
 		content = JSON.parse_string(file.get_as_text())
 		return content
-	return {}
+	return []
 
 func _on_tree_exiting():
 	var file = FileAccess.open("user://config", FileAccess.WRITE)

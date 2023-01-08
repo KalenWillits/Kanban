@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://l6uwiho1cibb"]
+[gd_scene load_steps=38 format=3 uid="uid://l6uwiho1cibb"]
 
 [ext_resource type="Script" path="res://Main.gd" id="1_a0gqg"]
 [ext_resource type="FontFile" uid="uid://7ww1d3ya1rvs" path="res://static/UbuntuMono-R.ttf" id="2_jr5mf"]
@@ -18,12 +18,44 @@ bg_color = Color(0.0705882, 0.0705882, 0.0705882, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dlpdu"]
 bg_color = Color(0.0705882, 0.0705882, 0.0705882, 1)
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hx1hu"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6gp4h"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qirmf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1rgn2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t7loj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cxnh0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t2nhw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_43mwv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_imneh"]
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+
 [sub_resource type="Theme" id="Theme_q10dk"]
 Button/styles/disabled = SubResource("StyleBoxFlat_8ddm3")
 Button/styles/focus = SubResource("StyleBoxFlat_gjfmx")
 Button/styles/hover = SubResource("StyleBoxFlat_3caog")
 Button/styles/normal = SubResource("StyleBoxFlat_swxk6")
 Button/styles/pressed = SubResource("StyleBoxFlat_dlpdu")
+HScrollBar/styles/grabber = SubResource("StyleBoxEmpty_hx1hu")
+HScrollBar/styles/grabber_highlight = SubResource("StyleBoxEmpty_6gp4h")
+HScrollBar/styles/grabber_pressed = SubResource("StyleBoxEmpty_qirmf")
+HScrollBar/styles/scroll = SubResource("StyleBoxEmpty_1rgn2")
+HScrollBar/styles/scroll_focus = SubResource("StyleBoxEmpty_t7loj")
+VScrollBar/styles/grabber = SubResource("StyleBoxEmpty_cxnh0")
+VScrollBar/styles/grabber_highlight = SubResource("StyleBoxEmpty_t2nhw")
+VScrollBar/styles/grabber_pressed = SubResource("StyleBoxEmpty_43mwv")
+VScrollBar/styles/scroll = SubResource("StyleBoxFlat_imneh")
+VScrollBar/styles/scroll_focus = SubResource("StyleBoxFlat_imneh")
 
 [sub_resource type="InputEventKey" id="InputEventKey_e7qhg"]
 ctrl_pressed = true
@@ -105,36 +137,45 @@ theme = SubResource("Theme_q10dk")
 script = ExtResource("1_a0gqg")
 
 [node name="VBox" type="VBoxContainer" parent="."]
-layout_mode = 2
+offset_right = 4000.0
+offset_bottom = 364.0
 size_flags_horizontal = 3
 
 [node name="PT" type="MarginContainer" parent="VBox"]
-layout_mode = 2
+offset_right = 4000.0
 
 [node name="HBox" type="HBoxContainer" parent="VBox"]
-layout_mode = 2
+offset_top = 4.0
+offset_right = 4000.0
+offset_bottom = 360.0
 size_flags_vertical = 3
 
 [node name="PL" type="MarginContainer" parent="VBox/HBox"]
-layout_mode = 2
+offset_bottom = 356.0
 
 [node name="Div" type="MarginContainer" parent="VBox/HBox"]
-layout_mode = 2
+offset_left = 4.0
+offset_right = 36.0
+offset_bottom = 356.0
 
 [node name="VBox" type="VBoxContainer" parent="VBox/HBox/Div"]
-layout_mode = 2
+offset_right = 32.0
+offset_bottom = 356.0
 
 [node name="HBox" type="HBoxContainer" parent="VBox/HBox/Div/VBox"]
-layout_mode = 2
+offset_right = 32.0
+offset_bottom = 356.0
 size_flags_vertical = 3
 
 [node name="Menu" type="VBoxContainer" parent="VBox/HBox/Div/VBox/HBox"]
-layout_mode = 2
+offset_right = 32.0
+offset_bottom = 356.0
 
 [node name="OpenButton" type="Button" parent="VBox/HBox/Div/VBox/HBox/Menu"]
 custom_minimum_size = Vector2(32, 32)
 layout_direction = 1
-layout_mode = 2
+offset_right = 32.0
+offset_bottom = 32.0
 size_flags_vertical = 4
 focus_mode = 1
 theme_override_fonts/font = ExtResource("2_jr5mf")
@@ -145,7 +186,6 @@ text = "O"
 visible = false
 z_index = 10
 custom_minimum_size = Vector2(512, 0)
-layout_mode = 1
 offset_right = 67.0625
 offset_bottom = 31.0
 focus_mode = 1
@@ -155,7 +195,9 @@ caret_blink_interval = 0.5
 [node name="SaveButton" type="Button" parent="VBox/HBox/Div/VBox/HBox/Menu"]
 custom_minimum_size = Vector2(32, 32)
 layout_direction = 1
-layout_mode = 2
+offset_top = 36.0
+offset_right = 32.0
+offset_bottom = 68.0
 size_flags_vertical = 4
 focus_mode = 1
 theme_override_fonts/font = ExtResource("2_jr5mf")
@@ -165,7 +207,9 @@ text = "S"
 [node name="NewButton" type="Button" parent="VBox/HBox/Div/VBox/HBox/Menu"]
 custom_minimum_size = Vector2(32, 32)
 layout_direction = 1
-layout_mode = 2
+offset_top = 72.0
+offset_right = 32.0
+offset_bottom = 104.0
 size_flags_vertical = 4
 focus_mode = 1
 theme_override_fonts/font = ExtResource("2_jr5mf")
@@ -175,7 +219,9 @@ text = "R"
 [node name="NoteButton" type="Button" parent="VBox/HBox/Div/VBox/HBox/Menu"]
 custom_minimum_size = Vector2(32, 32)
 layout_direction = 1
-layout_mode = 2
+offset_top = 108.0
+offset_right = 32.0
+offset_bottom = 140.0
 size_flags_vertical = 4
 focus_mode = 1
 theme_override_fonts/font = ExtResource("2_jr5mf")
@@ -185,7 +231,9 @@ text = "N"
 [node name="UpButton" type="Button" parent="VBox/HBox/Div/VBox/HBox/Menu"]
 custom_minimum_size = Vector2(32, 32)
 layout_direction = 1
-layout_mode = 2
+offset_top = 144.0
+offset_right = 32.0
+offset_bottom = 176.0
 size_flags_vertical = 4
 focus_mode = 1
 theme_override_fonts/font = ExtResource("2_jr5mf")
@@ -195,7 +243,9 @@ text = "^"
 [node name="LeftButton" type="Button" parent="VBox/HBox/Div/VBox/HBox/Menu" node_paths=PackedStringArray("shortcut_context")]
 custom_minimum_size = Vector2(32, 32)
 layout_direction = 1
-layout_mode = 2
+offset_top = 180.0
+offset_right = 32.0
+offset_bottom = 212.0
 size_flags_vertical = 4
 focus_mode = 1
 shortcut_context = NodePath("")
@@ -206,7 +256,9 @@ text = "<"
 [node name="RightButton" type="Button" parent="VBox/HBox/Div/VBox/HBox/Menu"]
 custom_minimum_size = Vector2(32, 32)
 layout_direction = 1
-layout_mode = 2
+offset_top = 216.0
+offset_right = 32.0
+offset_bottom = 248.0
 size_flags_vertical = 4
 focus_mode = 1
 theme_override_fonts/font = ExtResource("2_jr5mf")
@@ -216,7 +268,9 @@ text = ">"
 [node name="DownButton" type="Button" parent="VBox/HBox/Div/VBox/HBox/Menu"]
 custom_minimum_size = Vector2(32, 32)
 layout_direction = 1
-layout_mode = 2
+offset_top = 252.0
+offset_right = 32.0
+offset_bottom = 284.0
 size_flags_vertical = 4
 focus_mode = 1
 theme_override_fonts/font = ExtResource("2_jr5mf")
@@ -226,7 +280,9 @@ text = "v"
 [node name="SelectButton" type="Button" parent="VBox/HBox/Div/VBox/HBox/Menu"]
 custom_minimum_size = Vector2(32, 32)
 layout_direction = 1
-layout_mode = 2
+offset_top = 288.0
+offset_right = 32.0
+offset_bottom = 320.0
 size_flags_vertical = 4
 focus_mode = 1
 theme_override_fonts/font = ExtResource("2_jr5mf")
@@ -236,7 +292,9 @@ text = "\\T"
 [node name="DeleteButton" type="Button" parent="VBox/HBox/Div/VBox/HBox/Menu"]
 custom_minimum_size = Vector2(32, 32)
 layout_direction = 1
-layout_mode = 2
+offset_top = 324.0
+offset_right = 32.0
+offset_bottom = 356.0
 size_flags_vertical = 4
 focus_mode = 1
 theme_override_fonts/font = ExtResource("2_jr5mf")
@@ -244,10 +302,14 @@ shortcut = SubResource("Shortcut_crimd")
 text = "-"
 
 [node name="PR" type="MarginContainer" parent="VBox/HBox"]
-layout_mode = 2
+offset_left = 40.0
+offset_right = 40.0
+offset_bottom = 356.0
 
 [node name="PB" type="MarginContainer" parent="VBox"]
-layout_mode = 2
+offset_top = 364.0
+offset_right = 4000.0
+offset_bottom = 364.0
 
 [connection signal="resized" from="." to="." method="_on_resized"]
 [connection signal="tree_exiting" from="." to="." method="_on_tree_exiting"]
