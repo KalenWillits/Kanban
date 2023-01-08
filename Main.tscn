@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://l6uwiho1cibb"]
+[gd_scene load_steps=29 format=3 uid="uid://l6uwiho1cibb"]
 
 [ext_resource type="Script" path="res://Main.gd" id="1_a0gqg"]
 [ext_resource type="FontFile" uid="uid://7ww1d3ya1rvs" path="res://static/UbuntuMono-R.ttf" id="2_jr5mf"]
@@ -25,17 +25,83 @@ Button/styles/hover = SubResource("StyleBoxFlat_3caog")
 Button/styles/normal = SubResource("StyleBoxFlat_swxk6")
 Button/styles/pressed = SubResource("StyleBoxFlat_dlpdu")
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jhyo4"]
-content_margin_left = 0.0
-content_margin_top = 0.0
-content_margin_right = 0.0
-content_margin_bottom = 0.0
+[sub_resource type="InputEventKey" id="InputEventKey_e7qhg"]
+ctrl_pressed = true
+keycode = 79
 
-[node name="Main" type="ScrollContainer"]
-offset_right = 960.0
-offset_bottom = 540.0
+[sub_resource type="Shortcut" id="Shortcut_pc0p4"]
+events = [SubResource("InputEventKey_e7qhg")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_ymwwd"]
+ctrl_pressed = true
+keycode = 83
+
+[sub_resource type="Shortcut" id="Shortcut_shux5"]
+events = [SubResource("InputEventKey_ymwwd")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_o71hs"]
+ctrl_pressed = true
+keycode = 82
+
+[sub_resource type="Shortcut" id="Shortcut_1lml8"]
+events = [SubResource("InputEventKey_o71hs")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_66hph"]
+ctrl_pressed = true
+keycode = 78
+
+[sub_resource type="Shortcut" id="Shortcut_7n81b"]
+events = [SubResource("InputEventKey_66hph")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_sj7mq"]
+ctrl_pressed = true
+keycode = 4194320
+
+[sub_resource type="Shortcut" id="Shortcut_wmfan"]
+events = [SubResource("InputEventKey_sj7mq")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_qye10"]
+ctrl_pressed = true
+keycode = 4194319
+
+[sub_resource type="Shortcut" id="Shortcut_y2wps"]
+events = [SubResource("InputEventKey_qye10")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_2hy47"]
+ctrl_pressed = true
+keycode = 4194321
+
+[sub_resource type="Shortcut" id="Shortcut_dk1xs"]
+events = [SubResource("InputEventKey_2hy47")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_7t4c1"]
+ctrl_pressed = true
+keycode = 4194322
+
+[sub_resource type="Shortcut" id="Shortcut_5mpc2"]
+events = [SubResource("InputEventKey_7t4c1")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_wdt1b"]
+ctrl_pressed = true
+keycode = 4194306
+
+[sub_resource type="Shortcut" id="Shortcut_ay1gq"]
+events = [SubResource("InputEventKey_wdt1b")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_w41oe"]
+ctrl_pressed = true
+keycode = 4194312
+
+[sub_resource type="Shortcut" id="Shortcut_crimd"]
+events = [SubResource("InputEventKey_w41oe")]
+
+[node name="Main" type="ScrollContainer" groups=["main"]]
+custom_minimum_size = Vector2(4000, 3000)
+offset_right = 40.0
+offset_bottom = 292.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 theme = SubResource("Theme_q10dk")
-theme_override_styles/panel = SubResource("StyleBoxEmpty_jhyo4")
 script = ExtResource("1_a0gqg")
 
 [node name="VBox" type="VBoxContainer" parent="."]
@@ -65,13 +131,51 @@ size_flags_vertical = 3
 [node name="Menu" type="VBoxContainer" parent="VBox/HBox/Div/VBox/HBox"]
 layout_mode = 2
 
+[node name="OpenButton" type="Button" parent="VBox/HBox/Div/VBox/HBox/Menu"]
+custom_minimum_size = Vector2(32, 32)
+layout_direction = 1
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("2_jr5mf")
+shortcut = SubResource("Shortcut_pc0p4")
+text = "O"
+
+[node name="OpenFileInput" type="LineEdit" parent="VBox/HBox/Div/VBox/HBox/Menu/OpenButton"]
+visible = false
+z_index = 10
+custom_minimum_size = Vector2(512, 0)
+layout_mode = 1
+offset_right = 67.0625
+offset_bottom = 31.0
+caret_blink = true
+caret_blink_interval = 0.5
+
+[node name="SaveButton" type="Button" parent="VBox/HBox/Div/VBox/HBox/Menu"]
+custom_minimum_size = Vector2(32, 32)
+layout_direction = 1
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("2_jr5mf")
+shortcut = SubResource("Shortcut_shux5")
+text = "S"
+
 [node name="NewButton" type="Button" parent="VBox/HBox/Div/VBox/HBox/Menu"]
 custom_minimum_size = Vector2(32, 32)
 layout_direction = 1
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_fonts/font = ExtResource("2_jr5mf")
-text = "+"
+shortcut = SubResource("Shortcut_1lml8")
+text = "R"
+
+[node name="NoteButton" type="Button" parent="VBox/HBox/Div/VBox/HBox/Menu"]
+custom_minimum_size = Vector2(32, 32)
+layout_direction = 1
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("2_jr5mf")
+shortcut = SubResource("Shortcut_7n81b")
+text = "N"
 
 [node name="UpButton" type="Button" parent="VBox/HBox/Div/VBox/HBox/Menu"]
 custom_minimum_size = Vector2(32, 32)
@@ -79,6 +183,7 @@ layout_direction = 1
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_fonts/font = ExtResource("2_jr5mf")
+shortcut = SubResource("Shortcut_wmfan")
 text = "^"
 
 [node name="LeftButton" type="Button" parent="VBox/HBox/Div/VBox/HBox/Menu" node_paths=PackedStringArray("shortcut_context")]
@@ -88,6 +193,7 @@ layout_mode = 2
 size_flags_vertical = 4
 shortcut_context = NodePath("")
 theme_override_fonts/font = ExtResource("2_jr5mf")
+shortcut = SubResource("Shortcut_y2wps")
 text = "<"
 
 [node name="RightButton" type="Button" parent="VBox/HBox/Div/VBox/HBox/Menu"]
@@ -96,6 +202,7 @@ layout_direction = 1
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_fonts/font = ExtResource("2_jr5mf")
+shortcut = SubResource("Shortcut_dk1xs")
 text = ">"
 
 [node name="DownButton" type="Button" parent="VBox/HBox/Div/VBox/HBox/Menu"]
@@ -104,7 +211,17 @@ layout_direction = 1
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_fonts/font = ExtResource("2_jr5mf")
+shortcut = SubResource("Shortcut_5mpc2")
 text = "v"
+
+[node name="SelectButton" type="Button" parent="VBox/HBox/Div/VBox/HBox/Menu"]
+custom_minimum_size = Vector2(32, 32)
+layout_direction = 1
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("2_jr5mf")
+shortcut = SubResource("Shortcut_ay1gq")
+text = "\\T"
 
 [node name="DeleteButton" type="Button" parent="VBox/HBox/Div/VBox/HBox/Menu"]
 custom_minimum_size = Vector2(32, 32)
@@ -112,6 +229,7 @@ layout_direction = 1
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_fonts/font = ExtResource("2_jr5mf")
+shortcut = SubResource("Shortcut_crimd")
 text = "-"
 
 [node name="PR" type="MarginContainer" parent="VBox/HBox"]
@@ -120,9 +238,17 @@ layout_mode = 2
 [node name="PB" type="MarginContainer" parent="VBox"]
 layout_mode = 2
 
+[connection signal="resized" from="." to="." method="_on_resized"]
+[connection signal="tree_exiting" from="." to="." method="_on_tree_exiting"]
+[connection signal="button_down" from="VBox/HBox/Div/VBox/HBox/Menu/OpenButton" to="." method="_on_open_button_button_down"]
+[connection signal="focus_exited" from="VBox/HBox/Div/VBox/HBox/Menu/OpenButton/OpenFileInput" to="." method="_on_open_file_input_focus_exited"]
+[connection signal="text_submitted" from="VBox/HBox/Div/VBox/HBox/Menu/OpenButton/OpenFileInput" to="." method="_on_open_file_input_text_submitted"]
+[connection signal="button_down" from="VBox/HBox/Div/VBox/HBox/Menu/SaveButton" to="." method="_on_save_button_button_down"]
 [connection signal="button_down" from="VBox/HBox/Div/VBox/HBox/Menu/NewButton" to="." method="_on_new_button_button_down"]
+[connection signal="button_down" from="VBox/HBox/Div/VBox/HBox/Menu/NoteButton" to="." method="_on_note_button_button_down"]
 [connection signal="button_down" from="VBox/HBox/Div/VBox/HBox/Menu/UpButton" to="." method="_on_up_button_button_down"]
 [connection signal="button_down" from="VBox/HBox/Div/VBox/HBox/Menu/LeftButton" to="." method="_on_left_button_button_down"]
 [connection signal="button_down" from="VBox/HBox/Div/VBox/HBox/Menu/RightButton" to="." method="_on_right_button_button_down"]
 [connection signal="button_down" from="VBox/HBox/Div/VBox/HBox/Menu/DownButton" to="." method="_on_down_button_button_down"]
+[connection signal="button_down" from="VBox/HBox/Div/VBox/HBox/Menu/SelectButton" to="." method="_on_select_button_button_down"]
 [connection signal="button_down" from="VBox/HBox/Div/VBox/HBox/Menu/DeleteButton" to="." method="_on_delete_button_button_down"]

@@ -1,0 +1,5 @@
+res://Main.tscn
+res://components/stack/Stack.tscn
+res://components/note/Note.tscn
+res://components/note/Note.gd
+res://Main.gd

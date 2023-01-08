@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://7ww1d3ya1rvs"
-path="res://.godot/imported/UbuntuMono-R.ttf-d3d26ca4642d63171c010fadac33a7eb.fontdata"
+path="res://godot/imported/UbuntuMono-R.ttf-d3d26ca4642d63171c010fadac33a7eb.fontdata"
 
 [deps]
 
 source_file="res://static/UbuntuMono-R.ttf"
-dest_files=["res://.godot/imported/UbuntuMono-R.ttf-d3d26ca4642d63171c010fadac33a7eb.fontdata"]
+dest_files=["res://godot/imported/UbuntuMono-R.ttf-d3d26ca4642d63171c010fadac33a7eb.fontdata"]
 
 [params]
 

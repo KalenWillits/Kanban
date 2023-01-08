@@ -14,50 +14,55 @@ func _on_text_focus_entered():
 	
 	
 func increment_position():
-	print(Cache.data[get_parent().dindex].size() > dindex)
-	if Cache.data[get_parent().dindex].size() > dindex + 1:
-		print('MOV')
+	if (get_parent().get_child_count() - 1) > dindex + 1:
 		get_parent().move_child(self, dindex + 2)
-		Cache.data[get_parent().dindex].remove_at(dindex)
 		dindex += 1
-		Cache.data[get_parent().dindex].insert(dindex, text_box.get_text())
 		text_box.grab_focus()
 	
 func decrement_position():
 	if 0 < dindex:
 		get_parent().move_child(self, dindex)
-		Cache.data[get_parent().dindex].remove_at(dindex)
 		dindex -= 1
-		Cache.data[get_parent().dindex].insert(dindex, text_box.get_text())
 		text_box.grab_focus()
 		
 func move_right():
-	if get_parent().dindex < (Cache.data.size() - 1):
-		Cache.data[get_parent().dindex].remove_at(dindex)
+	if get_parent().dindex < (get_parent().get_parent().get_child_count() - 1):
 		dindex = get_parent().get_parent().get_child(get_parent().dindex + 2).get_child_count() - 2
 		var copy = duplicate()
 		copy.dindex = dindex
 		get_parent().get_parent().get_child(get_parent().dindex + 2).add_child(copy)
-		Cache.data[get_parent().get_parent().get_child(get_parent().dindex + 2).dindex].append(text_box.get_text())
 		queue_free()
 		copy.text_box.grab_focus()
 
 
 func move_left():
 	if get_parent().dindex > 0:
-		Cache.data[get_parent().dindex].remove_at(dindex)
 		dindex = get_parent().get_parent().get_child(get_parent().dindex).get_child_count() - 2
 		var copy = duplicate()
 		copy.dindex = dindex
 		get_parent().get_parent().get_child(get_parent().dindex).add_child(copy)
-		Cache.data[get_parent().get_parent().get_child(get_parent().dindex).dindex].append(text_box.get_text())
 		queue_free()
 		copy.text_box.grab_focus()
 
+func get_next():
+	if get_parent().get_parent().get_child_count() > 1:
+		if (get_parent().get_child_count() - 1) > dindex + 1:
+			return get_parent().get_child(dindex + 2)
+		elif get_parent().dindex < (get_parent().get_parent().get_child_count() - 1):
+			if get_parent().get_parent().get_child_count() > 1:
+				if get_parent().get_parent().get_child(get_parent().dindex + 2) != null:
+					if get_parent().get_parent().get_child(get_parent().dindex + 2).get_child_count() > 1:
+						return get_parent().get_parent().get_child(get_parent().dindex + 2).get_child(1)
+					else:
+						return get_parent().get_parent().get_child(1).get_child(1)
+				else:
+					return get_parent().get_parent().get_child(1).get_child(1)
+			else:
+				return get_parent().get_parent().get_child(1).get_child(1)
+		else:
+			return get_parent().get_parent().get_child(1).get_child(1)
+		
 
-func _on_text_box_text_changed():
-	Cache.data[get_parent().dindex][dindex] = text_box.get_text()
 	
 func delete():
-	Cache.data[get_parent().dindex].remove_at(dindex)
 	queue_free()

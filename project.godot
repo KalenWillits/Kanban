@@ -12,6 +12,9 @@ config_version=5
 
 config/name="Kanban"
 run/main_scene="res://Main.tscn"
+config/use_hidden_project_data_directory=false
+config/use_custom_user_dir=true
+config/custom_user_dir_name="kanban"
 config/features=PackedStringArray("4.0", "GL Compatibility")
 boot_splash/bg_color=Color(0, 0, 0, 1)
 config/icon="res://icon.svg"
@@ -19,12 +22,15 @@ config/icon="res://icon.svg"
 [autoload]
 
 Modal="*res://components/modal/Modal.tscn"
-Cache="*res://auto/Cache.gd"
+Cache="*res://env/Cache.gd"
 
 [display]
 
-window/size/viewport_width=960
-window/size/viewport_height=540
+window/size/viewport_width=256
+window/size/viewport_height=256
+window/energy_saving/keep_screen_on=false
+window/per_pixel_transparency/allowed=true
+window/stretch/aspect="expand"
 
 [rendering]
 

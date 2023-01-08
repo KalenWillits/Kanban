@@ -1,10 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://c7vb81bsobebs"]
+[gd_scene load_steps=5 format=3 uid="uid://c7vb81bsobebs"]
 
 [ext_resource type="Script" path="res://components/stack/Stack.gd" id="1_qb4pm"]
 [ext_resource type="FontFile" uid="uid://7ww1d3ya1rvs" path="res://static/UbuntuMono-R.ttf" id="2_50hco"]
 
+[sub_resource type="InputEventKey" id="InputEventKey_agmhh"]
+ctrl_pressed = true
+keycode = 78
+
+[sub_resource type="Shortcut" id="Shortcut_85vmi"]
+events = [SubResource("InputEventKey_agmhh")]
+
 [node name="Stack" type="VBoxContainer"]
-custom_minimum_size = Vector2(384, 0)
+custom_minimum_size = Vector2(256, 0)
 layout_direction = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -16,9 +23,10 @@ grow_vertical = 2
 script = ExtResource("1_qb4pm")
 
 [node name="Button" type="Button" parent="."]
-offset_right = 384.0
-offset_bottom = 23.0
+offset_right = 256.0
+offset_bottom = 25.0
 theme_override_fonts/font = ExtResource("2_50hco")
+shortcut = SubResource("Shortcut_85vmi")
 text = "+"
 
 [connection signal="button_down" from="Button" to="." method="_on_button_button_down"]
