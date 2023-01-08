@@ -28,16 +28,18 @@ func _ready():
 
 
 func get_data():
-	var data: Array
+	var data: Dictionary = {}
 	for i in range(1, $VBox/HBox/Div/VBox/HBox.get_child_count()):
+		var stack_title = $VBox/HBox/Div/VBox/HBox.get_child(i).get_title()
 		var stack_data = $VBox/HBox/Div/VBox/HBox.get_child(i).get_data()
-		data.append(stack_data)
+		data[stack_title] = stack_data
 	return data
 	
 func set_data(data):
-	for stack_data in data:
+	for stack_title in data.keys():
 		var stack = make_new_stack()
-		for note_data in stack_data:
+		stack.set_title(stack_title)
+		for note_data in data[stack_title]:
 			stack.make_new_note(note_data)
 
 func _input(_event):
@@ -59,10 +61,14 @@ func _on_new_button_button_down():
 
 func _on_delete_button_button_down():
 	if Cache.selected != null:
-		if Cache.selected.get_parent().is_empty():
-			Cache.selected.get_parent().delete()
-		else:
-			Cache.selected.delete()
+		match Cache.selected.type:
+			"NOTE":
+				if Cache.selected.get_parent().is_empty():
+					Cache.selected.get_parent().delete()
+				else:
+					Cache.selected.delete()
+			"STACK":
+				Cache.selected.delete()
 
 
 func _on_up_button_button_down():
@@ -96,13 +102,16 @@ func _on_open_button_button_down():
 
 func _on_save_button_button_down():
 	save_data(JSON.stringify(get_data(), "  "))
+	
+func reset():
+	for i in range(1, $VBox/HBox/Div/VBox/HBox.get_child_count()):
+		$VBox/HBox/Div/VBox/HBox.get_child(i).delete()
 
 func save_data(content):
 	var path = get_user_dir() + Cache.savefile
 	var file = FileAccess.open(path, FileAccess.WRITE)
-	if not file:
-		push_error("Unable to open save file at %s" % path)
-	file.store_string(content)
+	if file:
+		file.store_string(content)
 
 func load_data():
 	var file = FileAccess.open(get_user_dir() + Cache.savefile, FileAccess.READ)
@@ -110,7 +119,7 @@ func load_data():
 	if file:
 		content = JSON.parse_string(file.get_as_text())
 		return content
-	return []
+	return {}
 
 func _on_tree_exiting():
 	var file = FileAccess.open("user://config", FileAccess.WRITE)
@@ -118,6 +127,7 @@ func _on_tree_exiting():
 
 
 func _on_open_file_input_text_submitted(new_text):
+	reset()
 	Cache.savefile = new_text
 	set_data(load_data())
 	$VBox/HBox/Div/VBox/HBox/Menu/OpenButton/OpenFileInput.hide()
@@ -136,6 +146,10 @@ func _on_select_button_button_down():
 
 func _on_note_button_button_down():
 	if Cache.selected != null:
-		Cache.selected.get_parent().make_new_note()
+		match Cache.selected.type:
+			"NOTE":
+				Cache.selected.get_parent().make_new_note()
+			"STACK":
+				Cache.selected.make_new_note()
 	elif $VBox/HBox/Div/VBox/HBox.get_child_count() > 1:
 		$VBox/HBox/Div/VBox/HBox.get_child(1).make_new_note()

@@ -1,5 +1,6 @@
 extends VBoxContainer
 
+const type = "STACK"
 var dindex: int
 
 @onready 
@@ -33,3 +34,13 @@ func delete():
 		var stack = get_parent().get_child(i)
 		stack.dindex -= 1
 	queue_free()
+	
+func get_title():
+	return $TitleInput.get_text()
+	
+func set_title(new_title):
+	$TitleInput.set_text(new_title)
+
+
+func _on_title_input_focus_entered():
+	Cache.selected = self

@@ -1,5 +1,6 @@
 extends VBoxContainer
 
+const type = "NOTE"
 @export var TextBoxNodePath: NodePath
 @onready var text_box = get_node(TextBoxNodePath)
 var dindex

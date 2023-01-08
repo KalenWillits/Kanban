@@ -1,14 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://c7vb81bsobebs"]
+[gd_scene load_steps=2 format=3 uid="uid://c7vb81bsobebs"]
 
 [ext_resource type="Script" path="res://components/stack/Stack.gd" id="1_qb4pm"]
-[ext_resource type="FontFile" uid="uid://7ww1d3ya1rvs" path="res://static/UbuntuMono-R.ttf" id="2_50hco"]
-
-[sub_resource type="InputEventKey" id="InputEventKey_agmhh"]
-ctrl_pressed = true
-keycode = 78
-
-[sub_resource type="Shortcut" id="Shortcut_85vmi"]
-events = [SubResource("InputEventKey_agmhh")]
 
 [node name="Stack" type="VBoxContainer"]
 custom_minimum_size = Vector2(256, 0)
@@ -22,11 +14,10 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_qb4pm")
 
-[node name="Button" type="Button" parent="."]
+[node name="TitleInput" type="LineEdit" parent="."]
 offset_right = 256.0
 offset_bottom = 25.0
-theme_override_fonts/font = ExtResource("2_50hco")
-shortcut = SubResource("Shortcut_85vmi")
-text = "+"
+theme_override_font_sizes/font_size = 12
+alignment = 1
 
-[connection signal="button_down" from="Button" to="." method="_on_button_button_down"]
+[connection signal="focus_entered" from="TitleInput" to="." method="_on_title_input_focus_entered"]
