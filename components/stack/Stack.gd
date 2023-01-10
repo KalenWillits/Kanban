@@ -8,7 +8,7 @@ var NotePackedScene: PackedScene = preload("res://components/note/Note.tscn")
 
 
 func get_data():
-	var data: Array[String]
+	var data: Array[String] = [$TitleInput.get_text()]
 	for i in range(1, get_child_count()):
 		var note = get_child(i)
 		data.append(note.text_box.get_text())

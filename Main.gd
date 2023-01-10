@@ -30,11 +30,7 @@ func _ready():
 func get_data():
 	var data: Array
 	for i in range(1, $VBox/HBox/Div/VBox/HBox.get_child_count()):
-		match i:
-			1:
-				data.append($VBox/HBox/Div/VBox/HBox.get_child(i).get_title())
-			_:
-				data.append($VBox/HBox/Div/VBox/HBox.get_child(i).get_data())
+		data.append($VBox/HBox/Div/VBox/HBox.get_child(i).get_data())
 	return data
 	
 func set_data(data):
