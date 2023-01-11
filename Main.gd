@@ -1,10 +1,11 @@
-extends ScrollContainer
+extends VBoxContainer
 
 const MAX_STACKS: int = 12
 const MARGIN = 8
-@onready var new_button = get_node("VBox/HBox/Div/VBox/HBox/Menu/NewButton")
+@onready var new_button = get_node("HBox/Div/VBox/HBox/Menu/NewButton")
 
 @onready var StackPackedScene: PackedScene = preload("res://components/stack/Stack.tscn")
+
 
 func get_user_dir():
 	var path_array = OS.get_system_dir(OS.SYSTEM_DIR_DESKTOP).split("/", false)
@@ -23,14 +24,14 @@ func _ready():
 	elif FileAccess.file_exists("user://config"):
 		var file = FileAccess.open("user://config", FileAccess.READ)
 		Cache.savefile = file.get_as_text()
-	$VBox/HBox/Div/VBox/HBox/Menu/OpenButton/OpenFileInput.set_text(Cache.savefile)
+	$HBox/Div/VBox/HBox/Menu/OpenButton/OpenFileInput.set_text(Cache.savefile)
 	set_data(load_data())
 
 
 func get_data():
 	var data: Array
-	for i in range(1, $VBox/HBox/Div/VBox/HBox.get_child_count()):
-		data.append($VBox/HBox/Div/VBox/HBox.get_child(i).get_data())
+	for i in range(1, $HBox/Div/VBox/HBox.get_child_count()):
+		data.append($HBox/Div/VBox/HBox.get_child(i).get_data())
 	return data
 	
 func set_data(data):
@@ -45,15 +46,15 @@ func set_data(data):
 
 func _input(_event):
 	if Input.is_action_just_pressed("ui_cancel"):
-		$VBox/HBox/Div/VBox/HBox/Menu/NewButton.grab_focus()
+		$HBox/Div/VBox/HBox/Menu/NewButton.grab_focus()
 		
 		
 func make_new_stack(title: String):
-	if ($VBox/HBox/Div/VBox/HBox.get_child_count() - 1) < MAX_STACKS:
+	if ($HBox/Div/VBox/HBox.get_child_count() - 1) < MAX_STACKS:
 		var stack = StackPackedScene.instantiate()
 		stack.set_title(title)
-		stack.dindex = $VBox/HBox/Div/VBox/HBox.get_child_count() - 1
-		$VBox/HBox/Div/VBox/HBox.add_child(stack)
+		stack.dindex = $HBox/Div/VBox/HBox.get_child_count() - 1
+		$HBox/Div/VBox/HBox.add_child(stack)
 		return stack
 	
 
@@ -99,15 +100,15 @@ func _on_focus_next_button_button_down():
 
 
 func _on_open_button_button_down():
-	$VBox/HBox/Div/VBox/HBox/Menu/OpenButton/OpenFileInput.show()
-	$VBox/HBox/Div/VBox/HBox/Menu/OpenButton/OpenFileInput.grab_focus()
+	$HBox/Div/VBox/HBox/Menu/OpenButton/OpenFileInput.show()
+	$HBox/Div/VBox/HBox/Menu/OpenButton/OpenFileInput.grab_focus()
 
 func _on_save_button_button_down():
 	save_data(JSON.stringify(get_data(), "  "))
 	
 func reset():
-	for i in range(1, $VBox/HBox/Div/VBox/HBox.get_child_count()):
-		$VBox/HBox/Div/VBox/HBox.get_child(i).delete()
+	for i in range(1, $HBox/Div/VBox/HBox.get_child_count()):
+		$HBox/Div/VBox/HBox.get_child(i).delete()
 
 func save_data(content):
 	var path = get_user_dir() + Cache.savefile
@@ -132,11 +133,11 @@ func _on_open_file_input_text_submitted(new_text):
 	reset()
 	Cache.savefile = new_text
 	set_data(load_data())
-	$VBox/HBox/Div/VBox/HBox/Menu/OpenButton/OpenFileInput.hide()
+	$HBox/Div/VBox/HBox/Menu/OpenButton/OpenFileInput.hide()
 
 
 func _on_open_file_input_focus_exited():
-	$VBox/HBox/Div/VBox/HBox/Menu/OpenButton/OpenFileInput.hide()
+	$HBox/Div/VBox/HBox/Menu/OpenButton/OpenFileInput.hide()
 
 
 func _on_select_button_button_down():
@@ -153,5 +154,10 @@ func _on_note_button_button_down():
 				Cache.selected.get_parent().make_new_note()
 			"STACK":
 				Cache.selected.make_new_note()
-	elif $VBox/HBox/Div/VBox/HBox.get_child_count() > 1:
-		$VBox/HBox/Div/VBox/HBox.get_child(1).make_new_note()
+	elif $HBox/Div/VBox/HBox.get_child_count() > 1:
+		$HBox/Div/VBox/HBox.get_child(1).make_new_note()
+
+
+func _on_resized():
+	DisplayServer.window_set_size(size)
+	get_viewport().set_size(size)

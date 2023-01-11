@@ -1,25 +1,27 @@
-[gd_scene load_steps=3 format=3 uid="uid://dy66xuy4kaub4"]
+[gd_scene load_steps=4 format=3 uid="uid://dy66xuy4kaub4"]
 
 [ext_resource type="FontFile" uid="uid://7ww1d3ya1rvs" path="res://static/UbuntuMono-R.ttf" id="1_7oj5b"]
+[ext_resource type="Theme" uid="uid://dov11qeplo4af" path="res://static/MainTheme.tres" id="1_dr4rc"]
 [ext_resource type="Script" path="res://components/note/Note.gd" id="1_w4wvf"]
 
 [node name="Note" type="VBoxContainer"]
 size_flags_horizontal = 3
+theme = ExtResource("1_dr4rc")
 script = ExtResource("1_w4wvf")
 TextBoxNodePath = NodePath("VBox/HBox/TextBox")
 
 [node name="VBox" type="VBoxContainer" parent="."]
-offset_right = 8.0
-offset_bottom = 25.0
+offset_right = 2.0
+offset_bottom = 17.0
 
 [node name="HBox" type="HBoxContainer" parent="VBox"]
-offset_right = 8.0
-offset_bottom = 25.0
+offset_right = 2.0
+offset_bottom = 17.0
 size_flags_vertical = 0
 
 [node name="TextBox" type="TextEdit" parent="VBox/HBox"]
-offset_right = 8.0
-offset_bottom = 25.0
+offset_right = 2.0
+offset_bottom = 17.0
 size_flags_horizontal = 3
 focus_mode = 1
 theme_override_fonts/font = ExtResource("1_7oj5b")
