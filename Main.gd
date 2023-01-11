@@ -64,14 +64,7 @@ func _on_new_button_button_down():
 
 func _on_delete_button_button_down():
 	if Cache.selected != null:
-		match Cache.selected.type:
-			"NOTE":
-				if Cache.selected.get_parent().is_empty():
-					Cache.selected.get_parent().delete()
-				else:
-					Cache.selected.delete()
-			"STACK":
-				Cache.selected.delete()
+		Cache.selected.delete()
 
 
 func _on_up_button_button_down():

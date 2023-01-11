@@ -4,8 +4,12 @@ const type = "NOTE"
 @export var TextBoxNodePath: NodePath
 @onready var text_box = get_node(TextBoxNodePath)
 var dindex
+var font: Font
 
 signal on_select(note)
+
+func _ready():
+	font = $VBox/HBox/TextBox.get("theme_override_fonts/font")
 
 func _on_text_focus_entered():
 	Cache.selected = self

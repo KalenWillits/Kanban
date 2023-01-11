@@ -80,32 +80,40 @@ offset_bottom = 364.0
 script = ExtResource("1_a0gqg")
 
 [node name="PT" type="MarginContainer" parent="."]
-layout_mode = 2
+offset_right = 40.0
 
 [node name="HBox" type="HBoxContainer" parent="."]
-layout_mode = 2
+offset_top = 4.0
+offset_right = 40.0
+offset_bottom = 360.0
 size_flags_vertical = 3
 
 [node name="PL" type="MarginContainer" parent="HBox"]
-layout_mode = 2
+offset_bottom = 356.0
 
 [node name="Div" type="MarginContainer" parent="HBox"]
-layout_mode = 2
+offset_left = 4.0
+offset_right = 36.0
+offset_bottom = 356.0
 
 [node name="VBox" type="VBoxContainer" parent="HBox/Div"]
-layout_mode = 2
+offset_right = 32.0
+offset_bottom = 356.0
 
 [node name="HBox" type="HBoxContainer" parent="HBox/Div/VBox"]
-layout_mode = 2
+offset_right = 32.0
+offset_bottom = 356.0
 size_flags_vertical = 3
 
 [node name="Menu" type="VBoxContainer" parent="HBox/Div/VBox/HBox"]
-layout_mode = 2
+offset_right = 32.0
+offset_bottom = 356.0
 
 [node name="OpenButton" type="Button" parent="HBox/Div/VBox/HBox/Menu"]
 custom_minimum_size = Vector2(32, 32)
 layout_direction = 1
-layout_mode = 2
+offset_right = 32.0
+offset_bottom = 32.0
 size_flags_vertical = 4
 focus_mode = 1
 theme = ExtResource("2_lvuox")
@@ -117,7 +125,6 @@ text = "O"
 visible = false
 z_index = 10
 custom_minimum_size = Vector2(512, 0)
-layout_mode = 0
 offset_right = 67.0625
 offset_bottom = 31.0
 focus_mode = 1
@@ -129,7 +136,9 @@ caret_blink_interval = 0.5
 [node name="SaveButton" type="Button" parent="HBox/Div/VBox/HBox/Menu"]
 custom_minimum_size = Vector2(32, 32)
 layout_direction = 1
-layout_mode = 2
+offset_top = 36.0
+offset_right = 32.0
+offset_bottom = 68.0
 size_flags_vertical = 4
 focus_mode = 1
 theme = ExtResource("2_lvuox")
@@ -140,7 +149,9 @@ text = "S"
 [node name="NewButton" type="Button" parent="HBox/Div/VBox/HBox/Menu"]
 custom_minimum_size = Vector2(32, 32)
 layout_direction = 1
-layout_mode = 2
+offset_top = 72.0
+offset_right = 32.0
+offset_bottom = 104.0
 size_flags_vertical = 4
 focus_mode = 1
 theme = ExtResource("2_lvuox")
@@ -151,7 +162,9 @@ text = "R"
 [node name="NoteButton" type="Button" parent="HBox/Div/VBox/HBox/Menu"]
 custom_minimum_size = Vector2(32, 32)
 layout_direction = 1
-layout_mode = 2
+offset_top = 108.0
+offset_right = 32.0
+offset_bottom = 140.0
 size_flags_vertical = 4
 focus_mode = 1
 theme = ExtResource("2_lvuox")
@@ -162,7 +175,9 @@ text = "N"
 [node name="UpButton" type="Button" parent="HBox/Div/VBox/HBox/Menu"]
 custom_minimum_size = Vector2(32, 32)
 layout_direction = 1
-layout_mode = 2
+offset_top = 144.0
+offset_right = 32.0
+offset_bottom = 176.0
 size_flags_vertical = 4
 focus_mode = 1
 theme = ExtResource("2_lvuox")
@@ -173,7 +188,9 @@ text = "^"
 [node name="LeftButton" type="Button" parent="HBox/Div/VBox/HBox/Menu" node_paths=PackedStringArray("shortcut_context")]
 custom_minimum_size = Vector2(32, 32)
 layout_direction = 1
-layout_mode = 2
+offset_top = 180.0
+offset_right = 32.0
+offset_bottom = 212.0
 size_flags_vertical = 4
 focus_mode = 1
 shortcut_context = NodePath("")
@@ -185,7 +202,9 @@ text = "<"
 [node name="RightButton" type="Button" parent="HBox/Div/VBox/HBox/Menu"]
 custom_minimum_size = Vector2(32, 32)
 layout_direction = 1
-layout_mode = 2
+offset_top = 216.0
+offset_right = 32.0
+offset_bottom = 248.0
 size_flags_vertical = 4
 focus_mode = 1
 theme = ExtResource("2_lvuox")
@@ -196,7 +215,9 @@ text = ">"
 [node name="DownButton" type="Button" parent="HBox/Div/VBox/HBox/Menu"]
 custom_minimum_size = Vector2(32, 32)
 layout_direction = 1
-layout_mode = 2
+offset_top = 252.0
+offset_right = 32.0
+offset_bottom = 284.0
 size_flags_vertical = 4
 focus_mode = 1
 theme = ExtResource("2_lvuox")
@@ -207,7 +228,9 @@ text = "v"
 [node name="SelectButton" type="Button" parent="HBox/Div/VBox/HBox/Menu"]
 custom_minimum_size = Vector2(32, 32)
 layout_direction = 1
-layout_mode = 2
+offset_top = 288.0
+offset_right = 32.0
+offset_bottom = 320.0
 size_flags_vertical = 4
 focus_mode = 1
 theme = ExtResource("2_lvuox")
@@ -218,7 +241,9 @@ text = "\\T"
 [node name="DeleteButton" type="Button" parent="HBox/Div/VBox/HBox/Menu"]
 custom_minimum_size = Vector2(32, 32)
 layout_direction = 1
-layout_mode = 2
+offset_top = 324.0
+offset_right = 32.0
+offset_bottom = 356.0
 size_flags_vertical = 4
 focus_mode = 1
 theme = ExtResource("2_lvuox")
@@ -227,10 +252,14 @@ shortcut = SubResource("Shortcut_crimd")
 text = "-"
 
 [node name="PR" type="MarginContainer" parent="HBox"]
-layout_mode = 2
+offset_left = 40.0
+offset_right = 40.0
+offset_bottom = 356.0
 
 [node name="PB" type="MarginContainer" parent="."]
-layout_mode = 2
+offset_top = 364.0
+offset_right = 40.0
+offset_bottom = 364.0
 
 [connection signal="resized" from="." to="." method="_on_resized"]
 [connection signal="tree_exiting" from="." to="." method="_on_tree_exiting"]
