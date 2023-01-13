@@ -13,15 +13,12 @@ script = ExtResource("1_w4wvf")
 TextBoxNodePath = NodePath("VBox/HBox/TextBox")
 
 [node name="VBox" type="VBoxContainer" parent="."]
-layout_mode = 2
 
 [node name="HBox" type="HBoxContainer" parent="VBox"]
-layout_mode = 2
 size_flags_vertical = 0
 
 [node name="TextBox" type="TextEdit" parent="VBox/HBox"]
 custom_minimum_size = Vector2(256, 0)
-layout_mode = 2
 size_flags_horizontal = 3
 focus_mode = 1
 theme_override_fonts/font = ExtResource("1_7oj5b")
