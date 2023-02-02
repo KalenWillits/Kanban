@@ -312,3 +312,4 @@ layout_mode = 2
 [connection signal="focus_exited" from="HBox/Div/VBox/HBox/Menu/SyntaxButton/SyntaxInput" to="." method="_on_syntax_input_focus_exited"]
 [connection signal="text_submitted" from="HBox/Div/VBox/HBox/Menu/SyntaxButton/SyntaxInput" to="." method="_on_syntax_input_text_submitted"]
 [connection signal="focus_entered" from="HBox/Div/VBox/HBox/Menu/Null" to="." method="_on_null_focus_entered"]
+[connection signal="focus_exited" from="HBox/Div/VBox/HBox/Menu/Null" to="." method="_on_null_focus_exited"]

@@ -5,6 +5,8 @@ const MARGIN = 8
 @onready var new_button = get_node("HBox/Div/VBox/HBox/Menu/NewButton")
 @onready var StackPackedScene: PackedScene = preload("res://components/stack/Stack.tscn")
 
+var null_has_focus = true
+
 
 func get_user_dir():
 	var path_array = OS.get_system_dir(OS.SYSTEM_DIR_DESKTOP).split("/", false)
@@ -19,7 +21,8 @@ func get_user_dir():
 
 func _ready():
 	var env_savefile = OS.get_environment("KANBAN_SAVEFILE")
-
+	$HBox/Div/VBox/HBox/Menu/Null.grab_focus()
+	null_has_focus = true
 	if env_savefile:
 		Cache.savefile = env_savefile
 		
@@ -85,7 +88,7 @@ func make_new_stack(title: String):
 		stack.set_title(title)
 		stack.dindex = $HBox/Div/VBox/HBox.get_child_count() - 1
 		$HBox/Div/VBox/HBox.add_child(stack)
-		$HBox/Div/VBox/HBox/Menu/Null.focus_next = stack.get_node("TitleInput").get_path()
+		$HBox/Div/VBox/HBox/Menu/Null.focus_next = $HBox/Div/VBox/HBox.get_child(1).get_node("TitleInput").get_path()
 		return stack
 	
 
@@ -212,5 +215,9 @@ func _on_syntax_input_focus_exited():
 
 
 func _on_null_focus_entered():
-	if $HBox/Div/VBox/HBox.get_child_count() > 1:
+	if $HBox/Div/VBox/HBox.get_child_count() > 1 and null_has_focus:
 		$HBox/Div/VBox/HBox.get_child(1).get_node("TitleInput").grab_focus()
+
+
+func _on_null_focus_exited():
+	null_has_focus = false
