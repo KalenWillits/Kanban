@@ -1,6 +1,6 @@
-res://Main.gd
 res://Main.tscn
 res://components/note/Note.gd
 res://static/MainTheme.tres
 res://components/note/Note.tscn
 res://components/stack/Stack.tscn
+res://Main.gd

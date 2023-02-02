@@ -3,7 +3,6 @@ extends VBoxContainer
 const MAX_STACKS: int = 12
 const MARGIN = 8
 @onready var new_button = get_node("HBox/Div/VBox/HBox/Menu/NewButton")
-
 @onready var StackPackedScene: PackedScene = preload("res://components/stack/Stack.tscn")
 
 
@@ -14,6 +13,9 @@ func get_user_dir():
 		result += "/%s" % path_array[i]
 	result += "/"
 	return result
+	
+
+
 
 func _ready():
 	var env_savefile = OS.get_environment("KANBAN_SAVEFILE")
@@ -29,24 +31,52 @@ func _ready():
 
 
 func get_data():
-	var data: Array
+	var data: Dictionary = {
+		"data": [],
+		"syntax": Cache.syntax
+		}
 	for i in range(1, $HBox/Div/VBox/HBox.get_child_count()):
-		data.append($HBox/Div/VBox/HBox.get_child(i).get_data())
+		data.data.append($HBox/Div/VBox/HBox.get_child(i).get_data())
 	return data
 	
 func set_data(data):
 	if data != null:
-		for stack_array in data:
+		for stack_array in data.get("data", []):
 			if stack_array.size() > 0:
 				var stack = make_new_stack(stack_array[0])
 				for i in range(1, stack_array.size()):
 					stack.make_new_note(stack_array[i])
 			else:
 				var _stack = make_new_stack("")
+		if data.get("syntax"):
+			push_syntax(data.syntax)
 
 func _input(_event):
+	if Input.is_action_just_pressed("open"):
+		_on_open_button_button_down()
+	if Input.is_action_just_pressed("save"):
+		_on_save_button_button_down()
+	if Input.is_action_just_pressed("new"):
+		_on_new_button_button_down()
+	if Input.is_action_just_pressed("note"):
+		_on_note_button_button_down()
+	if Input.is_action_just_pressed("up"):
+		_on_up_button_button_down()
+	if Input.is_action_just_pressed("left"):
+		_on_left_button_button_down()
+	if Input.is_action_just_pressed("right"):
+		_on_right_button_button_down()
+	if Input.is_action_just_pressed("down"):
+		_on_down_button_button_down()
+	if Input.is_action_just_pressed("select"):
+		_on_select_button_button_down()
+	if Input.is_action_just_pressed("delete"):
+		_on_delete_button_button_down()
+	if Input.is_action_just_pressed("syntax"):
+		_on_syntax_button_button_down()
 	if Input.is_action_just_pressed("ui_cancel"):
-		$HBox/Div/VBox/HBox/Menu/NewButton.grab_focus()
+		$HBox/Div/VBox/HBox/Menu/Null.grab_focus()
+		
 		
 		
 func make_new_stack(title: String):
@@ -55,6 +85,7 @@ func make_new_stack(title: String):
 		stack.set_title(title)
 		stack.dindex = $HBox/Div/VBox/HBox.get_child_count() - 1
 		$HBox/Div/VBox/HBox.add_child(stack)
+		$HBox/Div/VBox/HBox/Menu/Null.focus_next = stack.get_node("TitleInput").get_path()
 		return stack
 	
 
@@ -115,7 +146,7 @@ func load_data():
 	if file:
 		content = JSON.parse_string(file.get_as_text())
 		return content
-	return []
+	return {"data": [], "syntax": ""}
 
 func _on_tree_exiting():
 	var file = FileAccess.open("user://config", FileAccess.WRITE)
@@ -154,3 +185,32 @@ func _on_note_button_button_down():
 func _on_resized():
 	DisplayServer.window_set_size(size)
 	get_viewport().set_size(size)
+
+
+func _on_syntax_button_button_down():
+	$HBox/Div/VBox/HBox/Menu/SyntaxButton/SyntaxInput.show()
+	$HBox/Div/VBox/HBox/Menu/SyntaxButton/SyntaxInput.grab_focus()
+
+func push_syntax(syntax_string):
+	$HBox/Div/VBox/HBox/Menu/SyntaxButton/SyntaxInput.text = syntax_string
+	Cache.syntax = syntax_string
+	var syntax = {}
+	for syntax_arr in syntax_string.split(";"):
+		var pair = syntax_arr.split(":")
+		if pair.size() == 2:
+			syntax[pair[0].strip_edges(true, true)] = pair[1].strip_edges(true, true)
+	propagate_call("set_syntax", [syntax], false)
+
+func _on_syntax_input_text_submitted(new_text):
+	var keywords = {}
+	push_syntax(new_text)
+	$HBox/Div/VBox/HBox/Menu/SyntaxButton/SyntaxInput.hide()
+
+
+func _on_syntax_input_focus_exited():
+	$HBox/Div/VBox/HBox/Menu/SyntaxButton/SyntaxInput.hide()
+
+
+func _on_null_focus_entered():
+	if $HBox/Div/VBox/HBox.get_child_count() > 1:
+		$HBox/Div/VBox/HBox.get_child(1).get_node("TitleInput").grab_focus()

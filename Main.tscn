@@ -1,15 +1,17 @@
-[gd_scene load_steps=24 format=3 uid="uid://l6uwiho1cibb"]
+[gd_scene load_steps=26 format=3 uid="uid://l6uwiho1cibb"]
 
 [ext_resource type="Script" path="res://Main.gd" id="1_a0gqg"]
 [ext_resource type="FontFile" uid="uid://7ww1d3ya1rvs" path="res://static/UbuntuMono-R.ttf" id="2_jr5mf"]
 [ext_resource type="Theme" uid="uid://dov11qeplo4af" path="res://static/MainTheme.tres" id="2_lvuox"]
 
-[sub_resource type="InputEventKey" id="InputEventKey_e7qhg"]
+[sub_resource type="InputEventKey" id="InputEventKey_844lu"]
+device = -1
 ctrl_pressed = true
 keycode = 79
+unicode = 111
 
 [sub_resource type="Shortcut" id="Shortcut_pc0p4"]
-events = [SubResource("InputEventKey_e7qhg")]
+events = [SubResource("InputEventKey_844lu")]
 
 [sub_resource type="InputEventKey" id="InputEventKey_ymwwd"]
 ctrl_pressed = true
@@ -60,23 +62,32 @@ keycode = 4194322
 [sub_resource type="Shortcut" id="Shortcut_5mpc2"]
 events = [SubResource("InputEventKey_7t4c1")]
 
-[sub_resource type="InputEventKey" id="InputEventKey_wdt1b"]
+[sub_resource type="InputEventKey" id="InputEventKey_eki24"]
+device = -1
 ctrl_pressed = true
 keycode = 4194306
 
-[sub_resource type="Shortcut" id="Shortcut_ay1gq"]
-events = [SubResource("InputEventKey_wdt1b")]
+[sub_resource type="Shortcut" id="Shortcut_sttng"]
+events = [SubResource("InputEventKey_eki24")]
 
-[sub_resource type="InputEventKey" id="InputEventKey_w41oe"]
+[sub_resource type="InputEventKey" id="InputEventKey_ldk12"]
 ctrl_pressed = true
 keycode = 4194312
 
-[sub_resource type="Shortcut" id="Shortcut_crimd"]
-events = [SubResource("InputEventKey_w41oe")]
+[sub_resource type="Shortcut" id="Shortcut_ift0c"]
+events = [SubResource("InputEventKey_ldk12")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_toa7k"]
+ctrl_pressed = true
+keycode = 88
+
+[sub_resource type="Shortcut" id="Shortcut_ay1gq"]
+events = [SubResource("InputEventKey_toa7k")]
 
 [node name="Main" type="VBoxContainer"]
 offset_right = 40.0
 offset_bottom = 364.0
+theme = ExtResource("2_lvuox")
 script = ExtResource("1_a0gqg")
 
 [node name="PT" type="MarginContainer" parent="."]
@@ -107,9 +118,11 @@ custom_minimum_size = Vector2(32, 32)
 layout_direction = 1
 layout_mode = 2
 size_flags_vertical = 4
+tooltip_text = "Open/Save data to this path"
 focus_mode = 1
 theme = ExtResource("2_lvuox")
 theme_override_fonts/font = ExtResource("2_jr5mf")
+theme_override_font_sizes/font_size = 14
 shortcut = SubResource("Shortcut_pc0p4")
 text = "O"
 
@@ -131,9 +144,11 @@ custom_minimum_size = Vector2(32, 32)
 layout_direction = 1
 layout_mode = 2
 size_flags_vertical = 4
+tooltip_text = "Save data"
 focus_mode = 1
 theme = ExtResource("2_lvuox")
 theme_override_fonts/font = ExtResource("2_jr5mf")
+theme_override_font_sizes/font_size = 14
 shortcut = SubResource("Shortcut_shux5")
 text = "S"
 
@@ -142,20 +157,24 @@ custom_minimum_size = Vector2(32, 32)
 layout_direction = 1
 layout_mode = 2
 size_flags_vertical = 4
+tooltip_text = "Create a new row"
 focus_mode = 1
 theme = ExtResource("2_lvuox")
 theme_override_fonts/font = ExtResource("2_jr5mf")
+theme_override_font_sizes/font_size = 14
 shortcut = SubResource("Shortcut_1lml8")
-text = "R"
+text = "+"
 
 [node name="NoteButton" type="Button" parent="HBox/Div/VBox/HBox/Menu"]
 custom_minimum_size = Vector2(32, 32)
 layout_direction = 1
 layout_mode = 2
 size_flags_vertical = 4
+tooltip_text = "Create a new note"
 focus_mode = 1
 theme = ExtResource("2_lvuox")
 theme_override_fonts/font = ExtResource("2_jr5mf")
+theme_override_font_sizes/font_size = 14
 shortcut = SubResource("Shortcut_7n81b")
 text = "N"
 
@@ -164,9 +183,11 @@ custom_minimum_size = Vector2(32, 32)
 layout_direction = 1
 layout_mode = 2
 size_flags_vertical = 4
+tooltip_text = "Move selected note up "
 focus_mode = 1
 theme = ExtResource("2_lvuox")
 theme_override_fonts/font = ExtResource("2_jr5mf")
+theme_override_font_sizes/font_size = 14
 shortcut = SubResource("Shortcut_wmfan")
 text = "^"
 
@@ -175,10 +196,12 @@ custom_minimum_size = Vector2(32, 32)
 layout_direction = 1
 layout_mode = 2
 size_flags_vertical = 4
+tooltip_text = "Move selected note left"
 focus_mode = 1
 shortcut_context = NodePath("")
 theme = ExtResource("2_lvuox")
 theme_override_fonts/font = ExtResource("2_jr5mf")
+theme_override_font_sizes/font_size = 14
 shortcut = SubResource("Shortcut_y2wps")
 text = "<"
 
@@ -187,9 +210,11 @@ custom_minimum_size = Vector2(32, 32)
 layout_direction = 1
 layout_mode = 2
 size_flags_vertical = 4
+tooltip_text = "move selected note right"
 focus_mode = 1
 theme = ExtResource("2_lvuox")
 theme_override_fonts/font = ExtResource("2_jr5mf")
+theme_override_font_sizes/font_size = 14
 shortcut = SubResource("Shortcut_dk1xs")
 text = ">"
 
@@ -198,9 +223,11 @@ custom_minimum_size = Vector2(32, 32)
 layout_direction = 1
 layout_mode = 2
 size_flags_vertical = 4
+tooltip_text = "move selected note down"
 focus_mode = 1
 theme = ExtResource("2_lvuox")
 theme_override_fonts/font = ExtResource("2_jr5mf")
+theme_override_font_sizes/font_size = 14
 shortcut = SubResource("Shortcut_5mpc2")
 text = "v"
 
@@ -209,22 +236,57 @@ custom_minimum_size = Vector2(32, 32)
 layout_direction = 1
 layout_mode = 2
 size_flags_vertical = 4
+tooltip_text = "Toggle selected row"
 focus_mode = 1
 theme = ExtResource("2_lvuox")
 theme_override_fonts/font = ExtResource("2_jr5mf")
-shortcut = SubResource("Shortcut_ay1gq")
-text = "\\T"
+theme_override_font_sizes/font_size = 14
+shortcut = SubResource("Shortcut_sttng")
+text = "|"
 
 [node name="DeleteButton" type="Button" parent="HBox/Div/VBox/HBox/Menu"]
 custom_minimum_size = Vector2(32, 32)
 layout_direction = 1
 layout_mode = 2
 size_flags_vertical = 4
+tooltip_text = "Delete selected element"
 focus_mode = 1
 theme = ExtResource("2_lvuox")
 theme_override_fonts/font = ExtResource("2_jr5mf")
-shortcut = SubResource("Shortcut_crimd")
+theme_override_font_sizes/font_size = 14
+shortcut = SubResource("Shortcut_ift0c")
 text = "-"
+
+[node name="SyntaxButton" type="Button" parent="HBox/Div/VBox/HBox/Menu"]
+custom_minimum_size = Vector2(32, 32)
+layout_direction = 1
+layout_mode = 2
+size_flags_vertical = 4
+tooltip_text = "Change syntax highlighting in notes
+[KeyWord1: #HEXCODE; KeyWord2: #HEXCODE]"
+focus_mode = 1
+theme = ExtResource("2_lvuox")
+theme_override_fonts/font = ExtResource("2_jr5mf")
+theme_override_font_sizes/font_size = 14
+shortcut = SubResource("Shortcut_ay1gq")
+text = "</>"
+
+[node name="SyntaxInput" type="LineEdit" parent="HBox/Div/VBox/HBox/Menu/SyntaxButton"]
+visible = false
+z_index = 10
+custom_minimum_size = Vector2(512, 0)
+layout_mode = 0
+offset_right = 67.0625
+offset_bottom = 31.0
+focus_mode = 1
+theme = ExtResource("2_lvuox")
+theme_override_fonts/font = ExtResource("2_jr5mf")
+caret_blink = true
+caret_blink_interval = 0.5
+
+[node name="Null" type="Control" parent="HBox/Div/VBox/HBox/Menu"]
+layout_mode = 2
+focus_mode = 2
 
 [node name="PR" type="MarginContainer" parent="HBox"]
 layout_mode = 2
@@ -235,6 +297,7 @@ layout_mode = 2
 [connection signal="resized" from="." to="." method="_on_resized"]
 [connection signal="tree_exiting" from="." to="." method="_on_tree_exiting"]
 [connection signal="button_down" from="HBox/Div/VBox/HBox/Menu/OpenButton" to="." method="_on_open_button_button_down"]
+[connection signal="focus_exited" from="HBox/Div/VBox/HBox/Menu/OpenButton/OpenFileInput" to="." method="_on_open_file_input_focus_exited"]
 [connection signal="text_submitted" from="HBox/Div/VBox/HBox/Menu/OpenButton/OpenFileInput" to="." method="_on_open_file_input_text_submitted"]
 [connection signal="button_down" from="HBox/Div/VBox/HBox/Menu/SaveButton" to="." method="_on_save_button_button_down"]
 [connection signal="button_down" from="HBox/Div/VBox/HBox/Menu/NewButton" to="." method="_on_new_button_button_down"]
@@ -245,3 +308,7 @@ layout_mode = 2
 [connection signal="button_down" from="HBox/Div/VBox/HBox/Menu/DownButton" to="." method="_on_down_button_button_down"]
 [connection signal="button_down" from="HBox/Div/VBox/HBox/Menu/SelectButton" to="." method="_on_select_button_button_down"]
 [connection signal="button_down" from="HBox/Div/VBox/HBox/Menu/DeleteButton" to="." method="_on_delete_button_button_down"]
+[connection signal="button_down" from="HBox/Div/VBox/HBox/Menu/SyntaxButton" to="." method="_on_syntax_button_button_down"]
+[connection signal="focus_exited" from="HBox/Div/VBox/HBox/Menu/SyntaxButton/SyntaxInput" to="." method="_on_syntax_input_focus_exited"]
+[connection signal="text_submitted" from="HBox/Div/VBox/HBox/Menu/SyntaxButton/SyntaxInput" to="." method="_on_syntax_input_text_submitted"]
+[connection signal="focus_entered" from="HBox/Div/VBox/HBox/Menu/Null" to="." method="_on_null_focus_entered"]

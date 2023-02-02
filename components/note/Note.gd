@@ -63,8 +63,11 @@ func get_next():
 				return get_parent().get_parent().get_child(1).get_child(1)
 		else:
 			return get_parent().get_parent().get_child(1).get_child(1)
-		
+			
+func set_syntax(syntax: Dictionary):
+	var highlighter = CodeHighlighter.new()
+	highlighter.set_keyword_colors(syntax)
+	text_box.syntax_highlighter = highlighter
 
-	
 func delete():
 	queue_free()
