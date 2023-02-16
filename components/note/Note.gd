@@ -66,8 +66,18 @@ func get_next():
 			
 func set_syntax(syntax: Dictionary):
 	var highlighter = CodeHighlighter.new()
+	highlighter.number_color = Color(0.9, 0.9, 0.9)
+	highlighter.symbol_color = Color(0.9, 0.9, 0.9)
+	highlighter.function_color = Color(0.9, 0.9, 0.9)
+	highlighter.member_variable_color = Color(0.9, 0.9, 0.9)
 	highlighter.set_keyword_colors(syntax)
 	text_box.syntax_highlighter = highlighter
 
 func delete():
 	queue_free()
+
+
+func _on_text_box_text_changed():
+	var longest_line = get_parent().get_longest_line()
+	var stack_width = text_box.get_theme_font("ubuntu mono").get_string_size(longest_line, 0, -1, text_box.get("theme_override_font_sizes/font_size") - 1).x
+	get_parent().custom_minimum_size.x = max(stack_width, 256)

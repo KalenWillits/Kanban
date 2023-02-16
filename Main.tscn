@@ -41,12 +41,13 @@ keycode = 4194320
 [sub_resource type="Shortcut" id="Shortcut_wmfan"]
 events = [SubResource("InputEventKey_sj7mq")]
 
-[sub_resource type="InputEventKey" id="InputEventKey_qye10"]
+[sub_resource type="InputEventKey" id="InputEventKey_ju27s"]
+device = -1
 ctrl_pressed = true
 keycode = 4194319
 
-[sub_resource type="Shortcut" id="Shortcut_y2wps"]
-events = [SubResource("InputEventKey_qye10")]
+[sub_resource type="Shortcut" id="Shortcut_o26p8"]
+events = [SubResource("InputEventKey_ju27s")]
 
 [sub_resource type="InputEventKey" id="InputEventKey_2hy47"]
 ctrl_pressed = true
@@ -202,7 +203,7 @@ shortcut_context = NodePath("")
 theme = ExtResource("2_lvuox")
 theme_override_fonts/font = ExtResource("2_jr5mf")
 theme_override_font_sizes/font_size = 14
-shortcut = SubResource("Shortcut_y2wps")
+shortcut = SubResource("Shortcut_o26p8")
 text = "<"
 
 [node name="RightButton" type="Button" parent="HBox/Div/VBox/HBox/Menu"]

@@ -14,8 +14,8 @@ corner_radius_top_right = 1
 corner_radius_bottom_right = 1
 corner_radius_bottom_left = 1
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qfvpa"]
-bg_color = Color(0.0901961, 0.0901961, 0.0901961, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ua7u2"]
+bg_color = Color(0.164706, 0.164706, 0.164706, 1)
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1
@@ -65,8 +65,8 @@ corner_radius_bottom_left = 1
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nbadg"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v7kxn"]
-bg_color = Color(0.0901961, 0.0901961, 0.0901961, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_06lng"]
+bg_color = Color(0.164706, 0.164706, 0.164706, 1)
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1
@@ -113,8 +113,8 @@ corner_radius_top_right = 1
 corner_radius_bottom_right = 1
 corner_radius_bottom_left = 1
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ixycy"]
-bg_color = Color(0.0901961, 0.0901961, 0.0901961, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hvm57"]
+bg_color = Color(0.164706, 0.164706, 0.164706, 1)
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1
@@ -174,8 +174,9 @@ color = Color(1, 1, 1, 1)
 color = Color(1, 1, 1, 1)
 
 [resource]
+Button/fonts/font = ExtResource("1_nbh3t")
 Button/styles/disabled = SubResource("StyleBoxFlat_2vfwv")
-Button/styles/focus = SubResource("StyleBoxFlat_qfvpa")
+Button/styles/focus = SubResource("StyleBoxFlat_ua7u2")
 Button/styles/hover = SubResource("StyleBoxFlat_by8al")
 Button/styles/normal = SubResource("StyleBoxFlat_5cxv0")
 Button/styles/pressed = SubResource("StyleBoxFlat_6lq8b")
@@ -183,11 +184,11 @@ HScrollBar/styles/grabber = SubResource("StyleBoxEmpty_dtfxn")
 HScrollBar/styles/grabber_highlight = SubResource("StyleBoxEmpty_fuuao")
 HScrollBar/styles/grabber_pressed = SubResource("StyleBoxEmpty_dsya8")
 HScrollBar/styles/scroll = SubResource("StyleBoxEmpty_nbadg")
-LineEdit/styles/focus = SubResource("StyleBoxFlat_v7kxn")
+LineEdit/styles/focus = SubResource("StyleBoxFlat_06lng")
 LineEdit/styles/normal = SubResource("StyleBoxFlat_7v1uv")
 LineEdit/styles/read_only = SubResource("StyleBoxFlat_rok1u")
 Panel/styles/panel = SubResource("StyleBoxFlat_e8sr7")
-TextEdit/styles/focus = SubResource("StyleBoxFlat_ixycy")
+TextEdit/styles/focus = SubResource("StyleBoxFlat_hvm57")
 TextEdit/styles/normal = SubResource("StyleBoxFlat_h3mc4")
 TextEdit/styles/read_only = SubResource("StyleBoxFlat_ns1n0")
 TooltipLabel/fonts/font = ExtResource("1_nbh3t")

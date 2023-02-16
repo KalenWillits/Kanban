@@ -14,6 +14,14 @@ func get_data():
 		data.append(note.text_box.get_text())
 	return data
 	
+func get_longest_line():
+	var longest_line = ""
+	for text in get_data():
+		for line in text.split("\n"):
+			if len(line) > len(longest_line):
+				longest_line = line
+	return longest_line
+	
 func make_new_note(content=""):
 	var note = NotePackedScene.instantiate()
 	note.dindex = get_child_count() - 1

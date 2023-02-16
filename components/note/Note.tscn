@@ -4,7 +4,7 @@
 [ext_resource type="Theme" uid="uid://dov11qeplo4af" path="res://static/MainTheme.tres" id="1_dr4rc"]
 [ext_resource type="Script" path="res://components/note/Note.gd" id="1_w4wvf"]
 
-[sub_resource type="CodeHighlighter" id="CodeHighlighter_fclbo"]
+[sub_resource type="CodeHighlighter" id="CodeHighlighter_m76a4"]
 number_color = Color(0.909804, 0.909804, 0.909804, 1)
 symbol_color = Color(0.909804, 0.909804, 0.909804, 1)
 function_color = Color(0.909804, 0.909804, 0.909804, 1)
@@ -31,8 +31,9 @@ layout_mode = 2
 size_flags_horizontal = 3
 focus_mode = 1
 theme_override_fonts/font = ExtResource("1_7oj5b")
-theme_override_font_sizes/font_size = 12
-syntax_highlighter = SubResource("CodeHighlighter_fclbo")
+theme_override_font_sizes/font_size = 14
+syntax_highlighter = SubResource("CodeHighlighter_m76a4")
 scroll_fit_content_height = true
 
 [connection signal="focus_entered" from="VBox/HBox/TextBox" to="." method="_on_text_focus_entered"]
+[connection signal="text_changed" from="VBox/HBox/TextBox" to="." method="_on_text_box_text_changed"]
